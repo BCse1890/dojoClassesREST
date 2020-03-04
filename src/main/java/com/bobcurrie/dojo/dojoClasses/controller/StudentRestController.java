@@ -12,6 +12,7 @@ import java.util.List;
 @Getter
 @Setter
 
+@CrossOrigin(origins = { "http://localhost:3000" })
 @RestController
 @RequestMapping("/students")
 public class StudentRestController {
@@ -20,7 +21,7 @@ public class StudentRestController {
     StudentRepository studentRepository;
 
     @GetMapping
-    public List<Student> getLocations() {
+    public List<Student> getStudents() {
         return studentRepository.findAll();
     }
 
@@ -35,12 +36,12 @@ public class StudentRestController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteStudent(@PathVariable("id") int id) {
+    public void deleteStudent(@PathVariable("id") Integer id) {
         studentRepository.deleteById(id);
     }
 
     @GetMapping("/{id}")
-    public Student getStudentById(@PathVariable("id") int id) {
+    public Student getStudentById(@PathVariable("id") Integer id) {
         return studentRepository.findById(id).get();
     }
 
